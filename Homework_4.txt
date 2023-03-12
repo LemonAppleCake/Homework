@@ -1,0 +1,17 @@
+program Homework4;
+
+var N, hour, min, sec :integer;
+
+
+begin
+  
+  writeln('Введите временной интервал');
+  readln(N);
+
+  hour:=N div  3600;
+  min:= (N - hour*3600)  div 60;
+  sec:= (N - hour*3600 - min*60);
+
+  writeln (hour/1000,':',min/10,':',sec);
+  
+end.

@@ -1,0 +1,78 @@
+program Homework2;
+  var
+  	arr : array of integer;
+    SumOfOdd, SumFirstHalf, N, i, g, c : integer;
+    
+
+  begin
+    
+    //Задание массива N = 100 из натуральных чисел идущих подряд
+    print ('массива N = 100 из натуральных чисел идущих подряд');
+    writeln;
+    
+    N:=100;
+    setlength(arr, N);
+    
+    for i :=  0 to N-1 do begin 
+       arr[i]:= i;
+       writeln('i = ', i, ' arr = ', arr[i] );
+    end;
+    
+   writeln;
+   writeln('Перемешанный массив');
+   writeln;
+   
+//Перемешивание массива
+       for i := 0 to N-1 do begin
+         g := random(N-i) + i;
+         c := arr[i];
+         arr[i] := arr[g];  
+         arr[g] := c;
+         
+         writeln('i = ', i, ' arr = ', arr[i] );
+       end;
+     
+    writeln;
+    writeln('Динамический массив');
+    writeln;
+//Перевод массива в динамический
+    print('n =');
+    read(N);
+    setlength(arr, N); 
+    
+       for i:= 0 to N-1 do begin
+         writeln('i = ', i, ' arr = ', arr[i] );
+       end;
+   
+    writeln;
+    writeln('Числа большие N/2');
+    writeln;
+    
+ //Распечатывания числе > N/50  
+       for  i:= 0 to N-1 do begin
+         if arr[i] > N/2 then begin
+           writeln('i = ', i, ' arr = ', arr[i] );
+           end else writeln('--'); 
+       end;
+   
+    writeln;
+    writeln('Суммы нечётных чисел и первой половины массива');
+   
+  //Вычилление суммы нечётных числе массива
+     SumOfOdd:= 0;
+     SumFirstHalf:=0;
+       for  i := 0 to N-1 do begin
+         if arr[i] mod 2 > 0 then begin
+           SumOfOdd := arr[i]  + SumOfOdd;
+           end else begin   
+           end;
+       end;
+       
+  //Вычисление суммы чисел первой половины массива   
+       for  i := 0 to N div 2 do begin
+         SumFirstHalf:= arr[i] + SumFirstHalf;    
+       end;  
+      
+      writeln('Sum of odd numbers  = ', SumOfOdd );
+      writeln('Sum of first half numbers of massive  = ', SumFirstHalf );
+  end.
