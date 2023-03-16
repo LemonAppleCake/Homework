@@ -1,0 +1,76 @@
+program abc;
+
+
+  type vec2 = record
+          x,y,z,g,f,c : real;
+       end;
+	
+	function create_vec1( x,y,z :real) : vec2;
+  	  var 
+          vec_1: vec2;
+      begin      
+           vec_1.x := x;
+           vec_1.y := y;
+           vec_1.z := z;
+           create_vec1 := vec_1;
+      end;
+      
+      function create_vec2( g,f,c :real) : vec2;
+  	  var 
+          vec_2: vec2;
+      begin      
+           vec_2.x := g;
+           vec_2.y := f;
+           vec_2.z := c;
+           create_vec2 := vec_2;
+      end;
+    
+  function scal_value(arg1, arg2 :vec2) :real;
+      begin
+          scal_value:= arg1.x*arg2.x + arg1.y*arg2.y + arg1.z*arg2.z;
+      end;
+    
+  function print_vec(vec_1, vec_2 :vec2): real;
+      begin 
+ 
+          writeln ('x=', vec_1.x:5:3 ,' y=', vec_1.y:5:3 ,' z=', vec_1.z:5:3); 
+          writeln;
+          writeln ('x=', vec_2.g:5:3 ,' y=', vec_2.f:5:3 ,' z=', vec_2.c:5:3);
+      end;
+    
+    var 
+        A,B,arg1, arg2: vec2;
+        i: integer;
+        x,y,z,g,f,c: real;
+    begin
+    
+        begin
+           
+            i := 0;
+              if i = 0 then begin  
+                i := 1 + i;
+                writeln('Введите координаты вектора');
+                 writeln(' x = ');
+                 writeln(' y = ');
+                 writeln(' z = ');
+                 read(x,y,z);
+                 create_vec1(x,y,z);
+                  A:=create_vec2(x,y,z);
+              end else begin
+                           writeln('Введите координаты вектора');
+                           writeln(' x2 = ');
+                           writeln(' y2 = ');
+                           writeln(' z2 = ');
+                           readln(g,f,c);
+                          create_vec2(g,f,c);
+                          B:=create_vec2(g,f,c);
+                       end;
+         end;
+                begin              
+                    writeln;
+                    print_vec (A, B);
+                    scal_value (arg1, arg2); 
+                    writeln (scal_value);
+                end;
+    end.
+        
