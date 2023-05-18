@@ -1,0 +1,93 @@
+Program Project5;
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils,
+  Math;
+
+type
+    vec3 = object
+		private
+			x,y,z,length : real;
+    public
+      constructor create(ax,ay,az:real);
+      function calculation_length():real;
+    end;
+
+  constructor vec3.create(ax,ay,az:real);
+  begin
+  x  := ax;
+  y   := ay;
+  z   := az;
+  length := calculation_length();
+  end;
+
+  function calculation_length():real;
+  begin
+  result:= sqrt(x*x+y*y+z*z);
+  end;
+
+type
+  container = object
+    privete
+      data: array of vec3;
+  end;
+		public
+			constructor container.create_random(size:integer);
+      procedure container.print_all_vectors();
+      procedure container.add_vector(vector: vec3);
+			function container.find_shortest_vector() : vec3;
+    end;
+
+constructor container.create_random(size:integer);
+var i : integer;
+  begin
+     SetLength(data,size);
+        for i := 0 to size - 1 do
+        daat[i]:= vec3.create(random,random,random);
+    end;
+
+
+procedure container.print_all_vectors();
+var i: integer;
+   begin
+    for i := 0 to Length(data) -1 do
+    writeln('(,data[i].x:0:2,',',data[i].y:0:2,',',data[i].z:0:2,')')
+   end;
+end;
+
+procedure container.add_vector(vector: vec3); begin
+    SetLength (data, Length(data)+ 1);
+    data[Length(data)-1):= vector;
+end;
+
+
+function container.find_shortest_vector() : vec3;
+var
+  i: integer;
+  shortest: real;
+  shortestVec: vec3;
+  begin
+        shortest:=data[0].length;
+        shortestvec:= data[0];
+       for i:= 1 to Length(data)-1 do begin
+           if data[i].length < shortest then
+        begin
+              shortest:= data[i].length;
+              shortestVec:= data[i];
+        end;
+        end;
+       Result:=  shortestVec;
+       end;
+
+
+Begin
+    a.create_random(1,2,3);
+	a.print_value;
+
+    b.create_random(3,2,1);
+	b.print_value;
+
+	writeln('It worked');
+  readln;
+End.
